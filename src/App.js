@@ -16,6 +16,12 @@ const expenses = [
     amount: 294.67,
     date: new Date(2024, 2, 28),
   },
+  {
+    id: "e3",
+    title: "Новый письменный стол (деревянный)",
+    amount: 304.67,
+    date: new Date(2021, 2, 28),
+  },
 ]
 
 function App() {

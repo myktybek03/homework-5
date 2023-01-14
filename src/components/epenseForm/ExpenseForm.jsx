@@ -1,5 +1,31 @@
 import React, { useState } from "react"
-import "./ExpenseForm.css"
+import styled from "styled-components"
+
+const NewExpenseControls = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+`
+
+const LabelStyled = styled.label`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+`
+
+const InputStyled = styled.input`
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 20rem;
+  max-width: 100%;
+`
+const NewExpenseActions = styled.div`
+  text-align: right;
+`
 
 const defaultValues = {
   enteredTitle: "",
@@ -22,7 +48,7 @@ const ExpenseForm = (props) => {
   }
 
   const submitHandler = (event) => {
-    event.preventDefault() //
+    event.preventDefault()
 
     const expenseData = {
       title: userInput.enteredTitle,
@@ -43,18 +69,18 @@ const ExpenseForm = (props) => {
   }
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
-          <label>Заголовок</label>
-          <input
+      <NewExpenseControls>
+        <div>
+          <LabelStyled>Заголовок</LabelStyled>
+          <InputStyled
             type="text"
             value={userInput.enteredTitle}
             onChange={changeValuesHandler("enteredTitle")}
           />
         </div>
-        <div className="new-expense__control">
-          <label>Количество</label>
-          <input
+        <div>
+          <LabelStyled>Количество</LabelStyled>
+          <InputStyled
             type="number"
             min="0.01"
             step="0.01"
@@ -62,9 +88,9 @@ const ExpenseForm = (props) => {
             onChange={changeValuesHandler("enteredAmount")}
           />
         </div>
-        <div className="new-expense__control">
-          <label>Датировать</label>
-          <input
+        <div>
+          <LabelStyled>Датировать</LabelStyled>
+          <InputStyled
             type="date"
             min="2019-01-01"
             max="2025-12-31"
@@ -72,11 +98,11 @@ const ExpenseForm = (props) => {
             onChange={changeValuesHandler("enteredDate")}
           />
         </div>
-      </div>
-      <div className="new-expense__actions">
+      </NewExpenseControls>
+      <NewExpenseActions>
         <button type="submit">Добавить расходы</button>
         <button onClick={cancelHandler}>Отмена</button>
-      </div>
+      </NewExpenseActions>
     </form>
   )
 }

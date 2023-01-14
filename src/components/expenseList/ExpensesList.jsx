@@ -1,12 +1,17 @@
-import ExpenseItem from "../expenseItem/ExpenseItem";
-import "./ExpensesList.css";
+import ExpenseItem from "../expenseItem/ExpenseItem"
+import styled from "styled-components"
+
+const ExpenseListStyled = styled.ul`
+  color: white;
+  text-align: center;
+`
 
 const ExpensesList = ({ expenses }) => {
   if (expenses.length === 0) {
-    return <h1 className="expenses-list__fallback">No Expense Found</h1>;
+    return <h1 className="expenses-list__fallback">No Expense Found</h1>
   }
   return (
-    <ul className="expenses-list">
+    <ExpenseListStyled>
       {expenses.map((expense, index) => {
         return (
           <ExpenseItem
@@ -15,10 +20,10 @@ const ExpensesList = ({ expenses }) => {
             expensePrice={expense.amount}
             expenseDate={expense.date}
           />
-        );
+        )
       })}
-    </ul>
-  );
-};
+    </ExpenseListStyled>
+  )
+}
 
-export default ExpensesList;
+export default ExpensesList
